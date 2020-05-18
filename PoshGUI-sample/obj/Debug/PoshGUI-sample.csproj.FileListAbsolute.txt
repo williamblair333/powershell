@@ -1,0 +1,14 @@
+C:\temp\repos\PoshGUI-sample\bin\Debug\PoshGUI-sample.exe.config
+C:\temp\repos\PoshGUI-sample\bin\Debug\PoshGUI-sample.exe
+C:\temp\repos\PoshGUI-sample\bin\Debug\PoshGUI-sample.pdb
+C:\temp\repos\PoshGUI-sample\obj\Debug\PoshGUI-sample.csprojAssemblyReference.cache
+C:\temp\repos\PoshGUI-sample\obj\Debug\MainWindow.g.cs
+C:\temp\repos\PoshGUI-sample\obj\Debug\App.g.cs
+C:\temp\repos\PoshGUI-sample\obj\Debug\PoshGUI-sample_MarkupCompile.cache
+C:\temp\repos\PoshGUI-sample\obj\Debug\PoshGUI-sample_MarkupCompile.lref
+C:\temp\repos\PoshGUI-sample\obj\Debug\MainWindow.baml
+C:\temp\repos\PoshGUI-sample\obj\Debug\PoshGUI-sample.g.resources
+C:\temp\repos\PoshGUI-sample\obj\Debug\PoshGUI_sample.Properties.Resources.resources
+C:\temp\repos\PoshGUI-sample\obj\Debug\PoshGUI-sample.csproj.GenerateResource.cache
+C:\temp\repos\PoshGUI-sample\obj\Debug\PoshGUI-sample.exe
+C:\temp\repos\PoshGUI-sample\obj\Debug\PoshGUI-sample.pdb
