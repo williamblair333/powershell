@@ -13,6 +13,7 @@ Function Get-FixedDisk {
     )
     <#
         WMI query command which gets the list of all logical disks and saves the results to a variable named $DiskInfo
+		Replaced WMI with Get-CimInstance
     #>
     $DiskInfo = Get-CimInstance Win32_LogicalDisk -ComputerName $Computer -Filter 'DriveType=3'
     $DiskInfo
