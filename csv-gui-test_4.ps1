@@ -1,6 +1,8 @@
 [reflection.assembly]::load("System.Windows.Forms") | Out-Null
 [reflection.assembly]::load("System.Drawing") | Out-Null
 
+# Enable Visual Styles
+[Windows.Forms.Application]::EnableVisualStyles()
 
 # This block of code is a file dialog open box
 $FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{ 
@@ -50,12 +52,6 @@ $OnLoadForm_UpdateGrid= {
     $form.refresh()
 }
 
-
-# This button will save the file
-$button1_OnClick= {    
-	$dataGridView1.Rows |Select -Expand DataBoundItem | Export-Csv $pathFileName -NoType
-}
- 
 $Form = New-Object system.Windows.Forms.Form
 $Form.Text = "Form Text Goes Here"
 $Form.TopMost = $true
@@ -63,19 +59,28 @@ $Form.TopMost = $true
 $form.KeyPreview = $true
 $form.StartPosition = "centerscreen"
 
+$sds_width = 900
+$sds_height = 600
+
+$form.MinimumSize= New-Object System.Drawing.Size($sds_width,$sds_height)
+$form.Size = New-Object System.Drawing.Size($sds_width,$sds_height)
+$form.FormBorderStyle = 'Sizable'
+$form.AutoScroll = $true
+
+#dg
 $dataGridView1 = New-Object System.Windows.Forms.DataGridView -Property @{
 }
 
-$sds_width = 900
-$sds_height = 450
- 
-$form.Size = New-Object System.Drawing.Size($sds_width,$sds_height)
-
+$dataGridView1.MinimumSize= New-Object System.Drawing.Size(($sds_width - 25),($sds_height - 100))
 $dataGridView1.Size = New-Object System.Drawing.Size(($sds_width - 25),($sds_height - 100))
-$dataGridView1.AutoResizeColumns()
+
 $dataGridView1.AllowUserToOrderColumns = $true
 $dataGridView1AllowUserToResizeColumns = $true
 $dataGridView1.AutoResizeColumns()
+
+$dataGridView1.AutoSize = $true
+
+$dataGridView1.ScrollBars = 'Both'
 
 $dataGridView1.Name = $baseName
 $dataGridView1.DataMember = ""
@@ -85,8 +90,16 @@ $System_Drawing_Point.X = 5
 $System_Drawing_Point.Y = 5
 
 $dataGridView1.Location = $System_Drawing_Point
+
+#dg
+
 $form.Controls.Add($dataGridView1)
 $form.add_Load($OnLoadForm_UpdateGrid)
+
+# This button will save the file
+$button1_OnClick= {    
+	$dataGridView1.Rows |Select -Expand DataBoundItem | Export-Csv $pathFileName -NoType
+}
  
 $button = New-Object Windows.Forms.Button
 $button.text = "Save"
