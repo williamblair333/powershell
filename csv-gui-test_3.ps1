@@ -50,7 +50,6 @@ $OnLoadForm_UpdateGrid= {
     $form.refresh()
 }
 
-
 # This button will save the file
 $button1_OnClick= {    
 	$dataGridView1.Rows |Select -Expand DataBoundItem | Export-Csv $pathFileName -NoType
@@ -62,6 +61,8 @@ $Form.TopMost = $true
 
 $form.KeyPreview = $true
 $form.StartPosition = "centerscreen"
+$form.FormBorderStyle = 'Fixed3D'
+#None, FixedSingle, Fixed3D, FixedDialog, Sizable, FixedToolWindow, SizableToolWindow
 
 $dataGridView1 = New-Object System.Windows.Forms.DataGridView -Property @{
 }
@@ -70,13 +71,19 @@ $sds_width = 900
 $sds_height = 450
  
 $form.Size = New-Object System.Drawing.Size($sds_width,$sds_height)
+$form.MinimumSize= New-Object System.Drawing.Size($sds_width,$sds_height)
+$form.MaximumSize= New-Object System.Drawing.Size($sds_width,$sds_height)
 
+$form.FormBorderStyle = 'Sizable'
+$form.AutoScroll = $true
 $dataGridView1.Size = New-Object System.Drawing.Size(($sds_width - 25),($sds_height - 100))
-$dataGridView1.AutoResizeColumns()
-$dataGridView1.AllowUserToOrderColumns = $true
-$dataGridView1AllowUserToResizeColumns = $true
-$dataGridView1.AutoResizeColumns()
 
+
+# This is the same feature as AutoFit in Excel 
+$dataGridView1.AutoSizeColumnsMode = 'DisplayedCells'
+# None, ColumnHeader, AllCellsExceptHeader, AllCells, DisplayedCellsExceptHeader, DisplayedCells, Fill
+
+$dataGridViewColumn1 = New-Object System.Windows.Forms.DataGridViewColumn
 $dataGridView1.Name = $baseName
 $dataGridView1.DataMember = ""
 $dataGridView1.TabIndex = 0
