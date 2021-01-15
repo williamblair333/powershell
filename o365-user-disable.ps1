@@ -36,13 +36,13 @@ $string_disabled = 'disabled.'
 $upn_disabled = $string_disabled + $upn
 
 # Change the email account name
+Connect-MsolService
 Set-MsolUserPrincipalName -UserPrincipalName $upn -NewUserPrincipalName $upn_disabled
 
 #Let's update $upn now
 $upn = $upn_disabled
 
 #Remove user from all assigned groups
-# "C:\temp\Remove_User_All_Groups.ps1" -Identity $upn -IncludeAADSecurityGroups -IncludeOffice365Groups
 & '.\Remove_User_All_Groups.ps1' -Identity $upn -IncludeAADSecurityGroups -IncludeOffice365Groups
 
 #Remove all license from user acount
